@@ -1,0 +1,50 @@
+Provide an example of a program that contains an algorithm whose Big-Θ is exponential.
+Clearly explain what n represents in your program. 
+Make some assumption about how long it would take to execute one of the operations that you are counting. 
+Determine how large n would have to be so that the time required would exceed a million years. 
+Is there a more efficient algorithm that will solve the same problem? 
+If so, describe it.
+
+---
+
+n Represents the size of the input array.
+
+Based on some testing, 1 operation takes approximately 0.1 milliseconds.
+Based on a 365.24 day year, there are 31,556,736 seconds in a year. 
+Therefore, there are 31,556,736,000,000 (31.5 trillion) seconds in a million years. 
+1 Second = 1000 milliseconds 
+So there are 31,556,736,000,000,000 ms (31.5 quadrillion) in a million years.
+Divide this by 0.1 ms per operation to find how many operations must be run = 315,567,360,000,000,000 (315.5 quadrillion operations)
+How large does the input have to be in order to get to this many operations?
+We will round up to 316 quadrillion at this point and let Q represent quadrillion. 
+n(n-1)/2 = 316 Q
+n^2 - n = 632 Q
+Next I simply calculated the square root of 632Q which is 794,984,276
+This is comparitively insignificant to numbers in the quadrillions, so I think we can safely say that if n is approximately 800 million, then it will take over a million years to calculate given a few small assumptions like a continuous power supply and a machine that can run that long among a few other things.
+
+For all practical purposes, this algorithm becomes useless surprisingly fast due to it's  Θ(n^2) growth rate. At n=100, it takes about 3.5 seconds. At just n=150, it takes nearly 13 seconds. At n=1000 we are looking at approximately 10 minutes. 
+
+Luckily, there are a few algorithms that provide much better performance than this one. One example is the famous MergeSort. 
+
+MergeSort breaks the input array in half recursively and then merges them back together in order. It is much faster than BubbleSort, as it only takes approximately 1 millisecond for MergeSort to sort an array of 1000 integers -- compared to 10 minutes for BubbleSort!
+
+-
+1,000,000,000 ns = 1,000 ms = 1 s 
+n,comparisons,time
+2,1,0.09 ms
+3,3,0.25 ms
+4,6,0.55 ms
+5,10,0.95 ms
+6,15,1.4 ms
+7,21,1.8 ms 
+8,28,2.5 ms 
+9,36,3.2 ms 
+10,45,4 ms
+100,4950,3600 ms = 3.6 s or 4s
+150,11175,12900 ms = 12.9 s 
+1000,499500,>499500 ms = ~ 10 minutes
+
+----
+n=40 -> 263 ms
+n=80 -> 1828 ms
+n=160 -> 13922 ms 
