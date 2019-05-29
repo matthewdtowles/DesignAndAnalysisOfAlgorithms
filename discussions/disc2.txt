@@ -1,0 +1,4 @@
+Provide an example of a recursive function in which the amount of work on each activation is constant. 
+Provide the recurrence equation and the initial condition that counts the number of operations executed. 
+Specify which operations you are counting and why they are the critical ones to count to assess its execution time. 
+Draw the recursion tree for that function and determine the Big-Θ by determining a formula that counts the number of nodes in the tree as a function of n.
