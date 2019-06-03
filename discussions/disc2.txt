@@ -1,4 +1,30 @@
-Provide an example of a recursive function in which the amount of work on each activation is constant. 
-Provide the recurrence equation and the initial condition that counts the number of operations executed. 
-Specify which operations you are counting and why they are the critical ones to count to assess its execution time. 
-Draw the recursion tree for that function and determine the Big-Θ by determining a formula that counts the number of nodes in the tree as a function of n.
+    public static void countDown(int start) {
+        if (start < 1) {
+            System.out.println("BLASTOFF!");
+            return;
+        }
+        System.out.println(start--);
+        countDown(start);
+    }
+    
+    Initial condition:
+        T(0) = 1
+        
+    Recurrence equation:
+        T(n) = T(n - 1) + f(n)
+        f(n) = print statement = Θ(1)
+        So...
+        T(n) = T(n - 1) + Θ(1) 
+        T(n) = T(n - 1) + 1
+        
+        This is valid form for little master theorem:
+        
+    
+    Operations being counted are the print statements. At base case, it is called once, and each recursive call it is called once. It is the only "real" work that this algorithm does as the only other statements are "return" to exit the recursion and each recursive function call. 
+    
+    Formula to count number of nodes in tree as function of n:
+    Each call is Θ(1), so...
+    T(n) = n + 1
+    We add 1 due to the base case being T(0).
+    T(n) inset Θ(n + 1)
+    Drop the insignificant + 1 and... T(n) inset Θ(n)
