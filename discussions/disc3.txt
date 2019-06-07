@@ -1,0 +1,29 @@
+Choose one of the sorting algorithms
+explain whether there are any differences in the best, average and worst cases. 
+If there are differences, describe the data in the different cases and explain how the performance differs in each case.
+
+BubbleSort 
+Best case: Ω(n)
+Avg case:  Θ(n^2)
+Worst case: O(n^2)
+
+The best case for BubbleSort, Ω(n), is realized on an already sorted array. This is the best case since BubbleSort will evaluate every element when comparing it to the next element. If everything is already in order, it will only do this once. Example of input that would result in best case for BubbleSort:  {1, 4, 5, 9, 11}
+
+The average and worst cases for BubbleSort are both n^2. The worst case is realized when the input array is in reverse order. BubbleSort will move the largest number one index at a time from the starting index to the end. In doing this, it evaluates each element roughly n times (slightly less since the unsorted part of the array is shrinking.) Example of input for worst case:  {11, 9, 5, 4, 1}
+
+BubbleSorts simplicity allows for a best case that is better than superior sorting algorithms due to its simplicity. Unfortunately, this simplicity makes for a slow algorithm on average cases too. Let's take the same 5 numbers in our earlier examples and form a random order:  {5, 1, 9, 11, 4}. After the first scan through, 1 and 5 will swap and 11 will swap with 4. Here is a list of the comparisons:
+- compare 5,1 -> swap
+Beginning input: [5, 1, 9, 11, 4]
+Comparison 1: [1, 5, 9, 11, 4] 
+Comparison 2: [1, 5, 9, 11, 4]
+Comparison 3: [1, 5, 9, 11, 4]
+Comparison 4: [1, 5, 9, 4, 11] 
+Comparison 5: [1, 5, 9, 4, 11]
+Comparison 6: [1, 5, 9, 4, 11]
+Comparison 7: [1, 5, 4, 9, 11]
+Comparison 8: [1, 5, 4, 9, 11]
+Comparison 9: [1, 4, 5, 9, 11]
+Comparison 10: [1, 4, 5, 9, 11]
+Sorted output: [1, 4, 5, 9, 11]
+
+Hopefully that makes it a little more clear. It will scan through the array, comparing two neighbors in order and swap them if out of order. This means, once sorted, it will scan and compare yet again. When numbers are out of order at all, it requires several complete traversals of the array and swaps must be done one at a time in order to bubble the larger values up towards the "top" or end of the array. 
