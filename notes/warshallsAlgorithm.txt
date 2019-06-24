@@ -1,0 +1,7 @@
+warshalls (r, n) 
+    for i = 1 to n 
+        r[i, i] = 1 
+    for k = 1 to n 
+        for i = 1 to n 
+            for j = 1 to n 
+                r[i, j] = r[i, j] || ( r[i, k] && r[k, j] )
