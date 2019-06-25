@@ -1,0 +1,37 @@
+For this algorithm we must assume that the matrix contains a 1 when an edge is present and a 0 when it is not.
+There are several changes that must be made. The main diagonal must be set to 0 not 1 because the shortest path from any vertex to itself is the path of length 0. All other 0s must be changed to INF to indicate that no edge exists between those two vertices. The way the triple is processed now changes also. The minimum operation replaces or and addition replaces and.
+The modified algorithm is shown below where r is the adjacency matrix for an unweighted directed graph and n is the number of vertices:
+
+void floyds(int[][] r, int n) {
+    final static int INF = 99;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            if (i == j) {
+                r[i, j] = 0; 
+            } 
+            else if (r[i, j] == 0) {
+                r[i, j] = INF;
+            }
+            for (int k = 0; k < n; k++) {
+                for (int i = 0; i < n; i++) {
+                    for (int j = 0; j < n; j++) {
+                        r[i, j] = min(
+                                        r[i, j], 
+                                        (r[i, k] + r[k, j]) 
+                        );
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+int min(int a, int b) {
+    if (a >= b) {
+        return a;
+    }
+    return b;
+}
+
+This modified algorithm is generally referred to as Floyd’s algorithm, although because the algorithms are so similar they are also often both called the Floyd-Warshall algorithm.
